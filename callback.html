@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Connexion TikTok · Foi & Vie Studio</title>
+<style>body{font-family:system-ui,sans-serif;max-width:640px;margin:0 auto;padding:32px 16px;line-height:1.6;color:#222;background:#fdfbf7}h1{color:#7a4b2a}.box{background:#fff;border:1px solid #e5ded3;border-radius:10px;padding:16px;word-break:break-all;font-family:monospace}button{margin-top:12px;padding:10px 18px;border:0;border-radius:8px;background:#7a4b2a;color:#fff;font-size:16px}</style>
+</head>
+<body>
+<h1>Connexion TikTok</h1>
+<div id="out">Chargement…</div>
+<script>
+var p=new URLSearchParams(location.search),c=p.get("code"),e=p.get("error"),o=document.getElementById("out");
+if(e){o.textContent="Erreur : "+e+" "+(p.get("error_description")||"");}
+else if(!c){o.textContent="Aucun code reçu. Cette page sert uniquement de retour après la connexion TikTok.";}
+else{o.innerHTML='<p>✅ Connexion réussie. Copie ce code et envoie-le à ton bot (il expire vite) :</p><div class="box" id="code"></div><button id="copy">Copier le code</button>';
+document.getElementById("code").textContent=c;
+document.getElementById("copy").onclick=function(){navigator.clipboard.writeText(c).then(function(){document.getElementById("copy").textContent="Copié ✓";});};}
+</script>
+</body>
+</html>
